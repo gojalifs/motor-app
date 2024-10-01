@@ -50,5 +50,50 @@
 
     <div class="p-4 sm:ml-64">
         <div class="h-20 bg-white rounded-b-md text-center flex justify-center items-center text-3xl">Data Motor</div>
-    </div>
+        <div class="w-full bg-white mt-8">
+            <div class="container" style="width: 100%">
+                <div class="card">
+                    <div class="card-body">
+                        {{ $dataTable->table() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- <div>
+            <table>
+                <thead>
+                    <th>No</th>
+                    <th>Merk</th>
+                    <th>Transmisi</th>
+                    <th>Harga</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    @foreach ($motors as $key => $value)
+                        <tr>
+                            <th>{{ $key + 1 }}</th>
+                            <th>{{ $value->name }} </th>
+                            <th>{{ $value->type }} </th>
+                            <th>{{ $value->transmission }} </th>
+                            <th>{{ $value->price }} </th>
+                            <th>
+                                <button>Edit</button>
+                                <button>Hapus</button>
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div> --}}
+
+    <script>
+        $('#motors-table').DataTable({
+            buttons: ['excel', 'csv', 'pdf']
+        });
+    </script>
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush
